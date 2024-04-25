@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <h1 class="mb-4">New Tweet</h1>
+  <%= form_for @tweet, url: tweets_path, html: { class: 'needs-validation tweet-form', id: 'new_tweet_form', novalidate: true } do |f| %>
+    <div class="mb-3">
+      <%= f.label :content, class: "form-label" %>
+      <%= f.text_area :content, class: "form-control tweet-content", required: true %>
+      <div class="invalid-feedback">
+        Please enter your tweet content.
+      </div>
+    </div>
+    <%= f.submit "Create Tweet", class: "btn btn-primary" %>
+  <% end %>
+  <div id="error_messages" class="mt-3"></div>
+</div>
+<script src="common.js"></script>

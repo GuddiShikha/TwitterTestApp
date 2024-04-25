@@ -1,0 +1,24 @@
+<%=render partial: 'layouts/navbar'%>
+<div class="container mt-4">
+  <h2>All Tweets</h2>
+
+  <%= link_to 'New Tweet', new_tweet_path, class: 'btn btn-primary mb-3' %>
+  <div class="row">
+    <% @tweets.each do |tweet| %>
+      <div class="col-md-12 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"><%= tweet.content %></p>
+            <div class="d-flex justify-content-between">
+              <div class="btn-group">
+              <%= link_to 'Show', tweet_path(tweet, format: :html), remote: true, class: 'btn btn-sm btn-outline-success', id: "show_tweet_#{tweet.id}" %>
+              <%= link_to 'Edit', edit_tweet_path(tweet), class: 'btn btn-sm btn-outline-primary' %>
+                <%= button_to 'Delete', tweet_path(tweet), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger', id: "delete_tweet_#{tweet.id}" %>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
